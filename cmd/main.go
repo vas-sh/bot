@@ -25,7 +25,7 @@ func main() {
 
 	router := server.Router()
 
-	botSrv, err := service.New(tgBot, cfg.VasChatID)
+	botSrv, err := service.New(tgBot, cfg.VasChatID, cfg.MaxChatID)
 	if err != nil {
 		panic(err)
 	}
