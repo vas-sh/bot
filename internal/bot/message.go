@@ -17,6 +17,12 @@ func (s *srv) handleTextMessage(message *tgbotapi.Message) error {
 			Here, you will receive messages if our system detects activity.`,
 		)
 	}
+	if text == string(models.TakePhoto) {
+		err := s.client.TakePhoto()
+		if err != nil {
+			return err
+		}
+	}
 	return nil
 }
 

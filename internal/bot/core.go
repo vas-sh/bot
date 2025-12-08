@@ -11,7 +11,7 @@ type boter interface {
 }
 
 type picoclienter interface {
-	TakePhoto() (string, error)
+	TakePhoto() error
 }
 
 type srv struct {

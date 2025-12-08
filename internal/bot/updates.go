@@ -39,15 +39,4 @@ func (s *srv) manageUpdate(update tgbotapi.Update) {
 		}
 		return
 	}
-	if update.CallbackQuery != nil {
-		callback := tgbotapi.NewCallback(update.CallbackQuery.ID, "")
-		_, err := s.bot.Request(callback)
-		if err != nil {
-			log.Println(err.Error())
-		}
-		err = s.handleCallback(update.CallbackQuery)
-		if err != nil {
-			log.Println(err.Error())
-		}
-	}
 }
