@@ -4,4 +4,5 @@ type Command string
 
 const (
 	StartCommand Command = "/start"
+	TakePhoto    Command = "/photo"
 )

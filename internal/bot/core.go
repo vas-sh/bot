@@ -10,12 +10,18 @@ type boter interface {
 	GetUpdatesChan(config tgbotapi.UpdateConfig) tgbotapi.UpdatesChannel
 }
 
-type srv struct {
-	bot boter
+type picoclienter interface {
+	TakePhoto() (string, error)
 }
 
-func New(bot boter) *srv {
+type srv struct {
+	bot    boter
+	client picoclienter
+}
+
+func New(bot boter, client picoclienter) *srv {
 	return &srv{
-		bot: bot,
+		bot:    bot,
+		client: client,
 	}
 }

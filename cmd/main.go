@@ -8,17 +8,20 @@ import (
 	"github.com/vas-sh/bot/internal/config"
 	"github.com/vas-sh/bot/internal/handlers"
 	"github.com/vas-sh/bot/internal/handlers/bothandlers"
+	"github.com/vas-sh/bot/internal/picoclient"
 	"github.com/vas-sh/bot/internal/service"
 )
 
 func main() {
 	cfg := config.Config
 
+	picoClient := picoclient.New(cfg.BacePicoApi)
+
 	tgBotAPI, err := tgbotapi.NewBotAPI(cfg.TgBotToken)
 	if err != nil {
 		panic(err)
 	}
-	tgBot := bot.New(tgBotAPI)
+	tgBot := bot.New(tgBotAPI, picoClient)
 	go tgBot.Updates()
 
 	server := handlers.New()
